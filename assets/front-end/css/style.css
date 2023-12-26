@@ -350,12 +350,12 @@ ol {
 }
 
 .header__menu ul li.active a {
-	background: #e53637;
-	color: #ffffff;
+	background: #ffffff;
+	color: #000000;
 }
 
 .header__menu ul li:hover a {
-	color: #ffffff;
+	color: #e53637;
 }
 
 .header__menu ul li:hover .dropdown {
@@ -1203,7 +1203,7 @@ ol {
 
 .anime__video__player .plyr--video .plyr__control.plyr__tab-focus,
 .anime__video__player .plyr--video .plyr__control:hover,
-.anime__video__player .plyr--video .plyr__control[aria-expanded=true] {
+.anime__video__player .plyr--video .plyr__control[aria-expanded="true"] {
 	background: transparent;
 }
 
@@ -1215,11 +1215,13 @@ ol {
 	color: transparent;
 }
 
-.anime__video__player .plyr--full-ui input[type=range] {
+.anime__video__player .plyr--full-ui input[type="range"] {
 	color: #ffffff;
 }
 
-.anime__video__player .plyr__controls .plyr__controls__item.plyr__progress__container {
+.anime__video__player
+	.plyr__controls
+	.plyr__controls__item.plyr__progress__container {
 	position: absolute;
 	left: 26px;
 	bottom: 45px;
@@ -1257,7 +1259,10 @@ ol {
 
 .anime__video__player .plyr__control--overlaid {
 	background: transparent;
-	background: var(--plyr-video-control-background-hover, var(--plyr-color-main, var(--plyr-color-main, transparent)));
+	background: var(
+		--plyr-video-control-background-hover,
+		var(--plyr-color-main, var(--plyr-color-main, transparent))
+	);
 }
 
 .anime__video__player .plyr__control--overlaid svg {
