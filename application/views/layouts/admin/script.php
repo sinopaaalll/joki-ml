@@ -5,6 +5,8 @@
 <!-- jQuery UI -->
 <script src="<?= base_url('assets/admin/') ?>js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="<?= base_url('assets/admin/') ?>js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+<!-- Sweet Alert -->
+<script src="<?= base_url('assets/admin/') ?>js/plugin/sweetalert/sweetalert.min.js"></script>
 
 <!-- jQuery Scrollbar -->
 <script src="<?= base_url('assets/admin/') ?>js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
@@ -12,62 +14,100 @@
 <script src="<?= base_url('assets/admin/') ?>js/plugin/datatables/datatables.min.js"></script>
 <!-- Atlantis JS -->
 <script src="<?= base_url('assets/admin/') ?>js/atlantis.min.js"></script>
-<!-- Atlantis DEMO methods, don't include it in your project! -->
-<script src="<?= base_url('assets/admin/') ?>js/setting-demo2.js"></script>
+
 <script>
     $(document).ready(function() {
         $("#basic-datatables").DataTable({});
-
-        $("#multi-filter-select").DataTable({
-            pageLength: 5,
-            initComplete: function() {
-                this.api()
-                    .columns()
-                    .every(function() {
-                        var column = this;
-                        var select = $(
-                                '<select class="form-control"><option value=""></option></select>'
-                            )
-                            .appendTo($(column.footer()).empty())
-                            .on("change", function() {
-                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                column
-                                    .search(val ? "^" + val + "$" : "", true, false)
-                                    .draw();
-                            });
-
-                        column
-                            .data()
-                            .unique()
-                            .sort()
-                            .each(function(d, j) {
-                                select.append(
-                                    '<option value="' + d + '">' + d + "</option>"
-                                );
-                            });
-                    });
-            },
-        });
-
-        // Add Row
-        $("#add-row").DataTable({
-            pageLength: 5,
-        });
-
-        var action =
-            '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-        $("#addRowButton").click(function() {
-            $("#add-row")
-                .dataTable()
-                .fnAddData([
-                    $("#addName").val(),
-                    $("#addPosition").val(),
-                    $("#addOffice").val(),
-                    action,
-                ]);
-            $("#addRowModal").modal("hide");
-        });
     });
 </script>
+
+<script>
+    $(document).ready(function() {
+        // Menggunakan class 'currency-input' sebagai selector
+        $('.currency-input').on('input', function() {
+            // Mengambil nilai input
+            let inputValue = $(this).val();
+            // Menghapus karakter non-angka
+            inputValue = inputValue.replace(/[^0-9]/g, '');
+            // Format angka sebagai mata uang
+            let formattedValue = formatCurrency(inputValue);
+            // Memasukkan kembali nilai yang telah diformat ke dalam input
+            $(this).val(formattedValue);
+        });
+
+        $('.currency-input').each(function() {
+            // Mengambil nilai input dari atribut value
+            let inputValue = $(this).val();
+            // Memformat nilai sebagai mata uang
+            let formattedValue = formatCurrency(inputValue);
+            // Memasukkan kembali nilai yang telah diformat ke dalam input
+            $(this).val(formattedValue);
+        });
+    });
+
+    // Fungsi untuk format currency
+    function formatCurrency(value) {
+        // Menggunakan metode toLocaleString() untuk format currency
+        return parseInt(value).toLocaleString('id-ID');
+    }
+</script>
+
+<script>
+    $(document).ready(function() {
+
+        // Menghentikan tautan dari navigasi langsung
+        $('.btn-hapus').on('click', function(event) {
+            event.preventDefault();
+            var href = $(this).attr('href');
+
+            // Menampilkan dialog konfirmasi SweetAlert
+            swal({
+                title: 'Yakin?',
+                text: "Akan menghapus data ini secara permanen!",
+                icon: 'warning',
+                buttons: {
+                    confirm: {
+                        text: 'Yes, delete it!',
+                        className: 'btn btn-success'
+                    },
+                    cancel: {
+                        visible: true,
+                        className: 'btn btn-danger'
+                    }
+                }
+            }).then((willDelete) => {
+                if (willDelete) {
+                    // Jika pengguna mengkonfirmasi logout, arahkan ke URL logout
+                    window.location.href = href;
+                }
+            });
+        });
+
+    });
+</script>
+
+<?php
+if ($this->session->flashdata('success')) { ?>
+    <script>
+        var successMessage = <?php echo json_encode($this->session->flashdata('success')); ?>;
+        $(document).ready(function() {
+            swal("Selamat!", successMessage, "success");
+        });
+    </script>
+<?php } else if ($this->session->flashdata('warning')) { ?>
+    <script>
+        var warningMessage = <?php echo json_encode($this->session->flashdata('warning')); ?>;
+        $(document).ready(function() {
+
+            swal("Oops!", warningMessage, "warning");
+        });
+    </script>
+<?php } else if ($this->session->flashdata('error')) { ?>
+    <script>
+        var errorMessage = <?php echo json_encode($this->session->flashdata('error')); ?>;
+        $(document).ready(function() {
+
+            swal("Gagal!", errorMessage, "error");
+        });
+    </script>
+<?php } ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Dec 26, 2023 at 11:35 AM
+-- Generation Time: Dec 26, 2023 at 08:17 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -33,6 +33,14 @@ CREATE TABLE `kategori` (
   `nama_kategori` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
+(1, 'Joki Rank / Star'),
+(3, 'Joki Rank / Paket');
+
 -- --------------------------------------------------------
 
 --
@@ -43,9 +51,21 @@ CREATE TABLE `layanan` (
   `id` int(11) NOT NULL,
   `nama_layanan` varchar(255) NOT NULL,
   `kategori_id` int(11) NOT NULL,
-  `harga` varchar(255) NOT NULL,
+  `harga` double NOT NULL,
   `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `layanan`
+--
+
+INSERT INTO `layanan` (`id`, `nama_layanan`, `kategori_id`, `harga`, `foto`) VALUES
+(1, 'Master', 1, 3000, '86cc29a14fb10514845a421c63ab66bc.jpg'),
+(2, 'Grand Master', 1, 5000, '0f65dc5c78d26cb756dc4923f52345d3.jpg'),
+(3, 'Epic', 1, 7000, 'e27e4df5b4225dc0448dafb42aa459b7.jpg'),
+(4, 'Legend V - Mythic ', 3, 200000, '9b4efe22940d6c52d96d92f597e54ce4.png'),
+(5, 'Legend', 1, 10000, 'd33349dffb3289c0dea3dddd014972c9.jpg'),
+(6, 'Mythic', 1, 15000, '78a266b2762ce22c74563ae53792055d.jpg');
 
 --
 -- Indexes for dumped tables
@@ -72,13 +92,13 @@ ALTER TABLE `layanan`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
