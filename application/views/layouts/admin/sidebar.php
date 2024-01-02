@@ -44,6 +44,13 @@
                         <p>Layanan</p>
                     </a>
                 </li>
+
+                <li class="nav-item <?= $this->uri->segment(2) == "pesanan" ? "active" : "" ?>">
+                    <a href="<?= base_url('admin/pesanan') ?>">
+                        <i class="fas fa-desktop"></i>
+                        <p>Pesanan</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

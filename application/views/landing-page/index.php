@@ -37,7 +37,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="./index.html">
-                            <img src="<?= base_url('assets/front-end/') ?>img/logo.jpeg"" alt="" style=" width: 70px; margin-top: -20px; margin-bottom: -15px">
+                            <img src="<?= base_url('assets/front-end/') ?>img/logo1.png" alt="" style=" width: 70px; margin-top: -20px; margin-bottom: -15px">
                         </a>
                     </div>
                 </div>
@@ -45,17 +45,17 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="./index.html">Homepage</a></li>
+                                <li class="active"><a href="/joki-ml">Homepage</a></li>
                                 <!-- <li><a href="#">Contacts</a></li> -->
                             </ul>
                         </nav>
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <!-- <div class="col-lg-2">
                     <div class="header__right">
                         <a href="./login.html"><span class="icon_profile"></span></a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div id="mobile-menu-wrap"></div>
         </div>
@@ -66,13 +66,15 @@
     <section class="hero">
         <div class="container">
             <div class="hero__slider owl-carousel">
-                <div class="hero__items set-bg" data-setbg="<?= base_url('assets/front-end/') ?>img/slider.jpg">
+                <div class="hero__items set-bg" data-setbg="<?= base_url('assets/uploads/layanan/') ?>slider.png">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
                                 <!-- <div class="label">Adventure</div> -->
-                                <h2>Joki Ryouta</h2>
-                                <p>Deskripsi</p>
+                                <!-- <h2>Joki Ryouta</h2>
+                                <p>Deskripsi</p> -->
+                                <img src="<?= base_url('assets/front-end/') ?>img/logo2.png" alt="" style=" width: 200px; margin-top: 20px; margin-bottom: 15px">
+                                
                                 <a href="#start" id="mulai"><span>Mulai</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
@@ -102,7 +104,7 @@
                                     if ($l->kategori_id == $k->id) { ?>
                                         <div class="col-lg-3 col-md-6 col-sm-6">
                                             <div class="product__item">
-                                                <div class="product__item__pic set-bg" data-setbg="<?= base_url('assets/uploads/layanan/' . $l->foto) ?>">
+                                                <div class="product__item__pic set-bg" style="background-size: 250px 250px;" data-setbg="<?= base_url('assets/uploads/layanan/' . $l->foto) ?>">
                                                     <?php if ($k->id == 1) { ?>
                                                         <div class="comment"><?= "Rp " . number_format($l->harga, 0, ',', '.') ?> / <i class="fa fa-star"></i></div>
                                                     <?php } else { ?>
@@ -138,7 +140,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="footer__logo">
-                        <a href="./index.html"><img src="<?= base_url('assets/front-end/') ?>img/logo.png" alt=""></a>
+                        <a href="#"><img src="<?= base_url('assets/front-end/') ?>img/logo1.png" alt="" style="width:100px; padding-top:0px"></a>
                     </div>
                 </div>
                 <div class="col-lg-6">

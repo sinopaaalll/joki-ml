@@ -39,7 +39,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="./index.html">
-                            <img src="<?= base_url('assets/front-end/') ?>img/logo.jpeg"" alt="" style=" width: 70px; margin-top: -20px; margin-bottom: -15px">
+                            <img src="<?= base_url('assets/front-end/') ?>img/logo1.png" alt="" style=" width: 70px; margin-top: -20px; margin-bottom: -15px">
                         </a>
                     </div>
                 </div>
@@ -47,17 +47,17 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="./index.html">Homepage</a></li>
+                                <li class="active"><a href="/joki-ml">Homepage</a></li>
                                 <!-- <li><a href="#">Contacts</a></li> -->
                             </ul>
                         </nav>
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <!-- <div class="col-lg-2">
                     <div class="header__right">
                         <a href="./login.html"><span class="icon_profile"></span></a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div id="mobile-menu-wrap"></div>
         </div>
@@ -112,31 +112,42 @@
                                     <div class="card-body row">
                                         <div class="form-group col-md-6">
                                             <label class="text-white">Login Via</label>
-                                            <select class="form-control form-control-sm">
+                                            <select id="via" class="form-control form-control-sm">
                                                 <option selected>Pilih Login Via</option>
-                                                <option>...</option>
+                                                <option>Montoon</option>
+                                                <option>Gmail/Data Center</option>
+                                                <option>VK</option>
+                                                <option>Tiktok</option>
+                                                <option>Facebook</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="text-white">User ID & Nickname</label>
-                                            <input type="text" name="nickname" class="form-control form-control-sm" placeholder="Ketikkan User ID & Nickname ...">
+                                            <input type="text" id="userId" name="nickname" class="form-control form-control-sm" placeholder="Ketikkan User ID & Nickname ...">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="text-white">Email/No. Hp/Moonton ID</label>
-                                            <input type="text" name="akun" class="form-control form-control-sm" placeholder="Ketikkan Email/No. Hp/Moonton ID ...">
+                                            <input type="text" id="dataAkun1" name="akun" class="form-control form-control-sm" placeholder="Ketikkan Email/No. Hp/Moonton ID ...">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="text-white">Password</label>
-                                            <input type="text" name="password" class="form-control form-control-sm" placeholder="Ketikkan Password...">
+                                            <input type="text" id="dataAkun2" name="password" class="form-control form-control-sm" placeholder="Ketikkan Password...">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="text-white">Request Hero</label>
-                                            <input type="text" name="req_hero" class="form-control form-control-sm" placeholder="Ketikkan Request Heroe ...">
+                                            <input type="text" id="hero" name="req_hero" class="form-control form-control-sm" placeholder="Ketikkan Request Hero ...">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="text-white">Catatan Untuk Penjoki</label>
-                                            <input type="text" name="catatan" class="form-control form-control-sm" placeholder="Ketikkan Catatan Untuk Penjoki ...">
+                                            <input type="text" id="catatan" name="catatan" class="form-control form-control-sm" placeholder="Ketikkan Catatan Untuk Penjoki ...">
                                         </div>
+                                        <?php if($layanan->kategori != "Joki Rank / Paket") { ?>
+                                            <div class="form-group col-md-12">
+                                                <label class="text-white">Jumlah Bintang Yang Dipesan</label>
+                                                <input type="number" id="jumlah" name="jumlah" class="form-control form-control-sm" placeholder="Ketikkan Jumlah Bintang ...">
+                                            </div>
+                                        <?php } ?>
+                                        <input type="hidden" id="harga" value="<?= $layanan->harga?>">
                                     </div>
                                 </div>
 
@@ -146,9 +157,9 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label class="imagecheck text-center mb-4">
-                                                        <input name="layanan" type="checkbox" value="1" class="imagecheck-input" checked>
+                                                        <input name="layanan" id="tipe" type="checkbox" value="<?= $layanan->nama_layanan ?>" class="imagecheck-input" checked>
                                                         <figure class="imagecheck-figure">
-                                                            <img src="<?= base_url('assets/uploads/layanan/' . $layanan->foto) ?>" alt="title" class="imagecheck-image">
+                                                            <img src="<?= base_url('assets/uploads/layanan/' . $layanan->foto) ?>" alt="title" class="imagecheck-image" style="height:180px">
                                                         </figure>
                                                     </label>
                                                 </div>
@@ -171,11 +182,20 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group">
+                                                    <label class="text-white">Nama</label>
+                                                    <input type="text" id="nama" class="form-control form-control-sm" placeholder="Nama Lengkap">
+                                                </div>
+                                                <div class="form-group">
                                                     <label class="text-white">No. WhatsApp</label>
-                                                    <input type="text" class="form-control form-control-sm" placeholder="Ketikkan No. WhatsApp">
+                                                    <input type="text" id="kontak" class="form-control form-control-sm" placeholder="Ketikkan No. WhatsApp">
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12"> 
+                                        <button type="button" class="btn btn-danger  btn-block" onclick="kirim()">Submit</button>
                                     </div>
                                 </div>
 
@@ -263,6 +283,106 @@
         </div>
     </div>
     <!-- Search model end -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function kirim() {
+            let token = '6820276700:AAGX3RR_L56yBtGunDElKe1nXvkqdZANESg'
+            let via = $('#via').find(':selected').val()
+            let userId = $('#userId').val();
+            let dataAkun1 = $('#dataAkun1').val();
+            let dataAkun2 = $('#dataAkun2').val();
+            let hero = $('#hero').val();
+            let kontak = $('#kontak').val();
+            let tipe = $('#tipe').val();
+            let catatan = $('#catatan').val();
+            let nama = $('#nama').val();
+            let jumlah = $('#jumlah').val();
+            let harga = $('#harga').val();
+            let total = harga * jumlah;
+
+            <?php if($layanan->kategori == "Joki Rank / Paket") { ?>
+                total = harga;
+                jumlah = 'tidak ada bintang dalam Joki Rank Paket';
+            <?php } ?>
+
+             // Pemeriksaan jika ada kolom yang kosong
+             if (!nama || !kontak || !tipe || !jumlah || !userId || !via || !dataAkun1 || !dataAkun2 || !hero || !catatan) {
+                Swal.fire({
+                    text: "Semua kolom harus diisi!",
+                    icon: "error",
+                    confirmButtonColor: "#dc3545"
+                });
+                return; // Hentikan eksekusi jika ada kolom yang kosong
+            }
+
+            let pesan = `
+            *Nama:* ${nama}
+            *No. WA:* ${kontak}
+            *Rank Tier:* ${tipe} 
+            *Jumlah Bintang:* ${jumlah}
+            *ID:* ${userId}
+            *Login Via:* ${via}
+            *Email/Username:* ${dataAkun1}
+            *Password:* ${dataAkun2}
+            *Req Hero:* ${hero}
+            *Pesan:* ${catatan}
+            *Harga:* ${total}
+            `;
+
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url('pesanan/create') ?>',
+                data: { login_via: via , 
+                    email: dataAkun1, 
+                    password: dataAkun2,
+                    hero: hero,
+                    nick_name: userId,
+                    jumlah_star: jumlah,
+                    catatan: catatan,
+                    nama: nama,
+                    no_wa: kontak,
+
+                 },
+                dataType: 'json',
+                success: function(response) {
+                    tele()
+                    // Lakukan sesuatu dengan respons dari server
+                },
+                error: function(error) {
+                    console.error(error);
+                    // Tangani kesalahan jika terjadi
+                }
+            });
+            const tele = () =>{
+                $.ajax({
+                        type: 'POST',
+                        url: `https://api.telegram.org/bot${token}/sendMessage`,
+                        data: {
+                            chat_id: -4015736510,
+                            text: pesan,
+                            parse_mode: 'Markdown',
+                        },
+                        success: function (res) {
+                            Swal.fire({
+                                    text: "Terimaksih telah order",
+                                    icon: "success",
+                                    confirmButtonColor:"#dc3545"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
+                        },
+                        error: function (error) {
+                            console.error(error);
+                            alert("error failed");
+                        }
+                });
+                
+            }
+
+        }
+    </script>
 
     <script src="<?= base_url('assets/admin/') ?>js/core/jquery.3.2.1.min.js"></script>
     <script src="<?= base_url('assets/admin/') ?>js/core/popper.min.js"></script>

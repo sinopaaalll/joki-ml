@@ -30,24 +30,77 @@
                 <div class="page-inner mt--5">
 
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-sm-12 col-md-4">
+							<div class="card card-stats card-success card-round">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="fa fa-shopping-cart"></i>
+											</div>
+										</div>
+										<div class="col-7 col-stats">
+											<div class="numbers">
+												<p class="card-category">Pesanan Per Hari</p>
+												<h4 class="card-title"><?= $pesanan_today->jumlah ?></h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-sm-12 col-md-4">
+							<div class="card card-stats card-primary card-round">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="fa fa-shopping-cart"></i>
+											</div>
+										</div>
+										<div class="col-7 col-stats">
+											<div class="numbers">
+												<p class="card-category">Pesanan Tujuh Hari Terakhir</p>
+												<h4 class="card-title"><?= $pesanan_week->jumlah ?></h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-sm-12 col-md-4">
+							<div class="card card-stats card-info card-round">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="fa fa-shopping-cart"></i>
+											</div>
+										</div>
+										<div class="col-7 col-stats">
+											<div class="numbers">
+												<p class="card-category">Pesanan Satu Bulan Terakhir</p>
+												<h4 class="card-title"><?= $pesanan_month->jumlah ?></h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="card">
-                                <div class="card-body"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body"></div>
+                                <div class="card-header">
+                                    <h4>Grafik Pesanan</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="lineChart"></canvas>
+                                    </div>
+									<div id="myChartLegend"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
