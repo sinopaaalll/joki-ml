@@ -4,6 +4,12 @@ date_default_timezone_set("Asia/Jakarta");
 
 class Dashboard extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        is_login();
+    }
+
     public function index()
     {
         $today = date('Y-m-d');
@@ -15,7 +21,7 @@ class Dashboard extends CI_Controller
         $this->db->from('pesanan');
         $this->db->where('DATE(created_at)', $today);
         $data['pesanan_today'] = $this->db->get()->row();
-        
+
         // Query Join
         $this->db->select('COUNT(id) as jumlah');
         $this->db->from('pesanan');

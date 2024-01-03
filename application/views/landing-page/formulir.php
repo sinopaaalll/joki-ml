@@ -7,7 +7,9 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anime | Template</title>
+    <title>Joki Ryouta</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="<?= base_url('assets/uploads/logo/') ?>logo.ico" type="image/x-icon" />
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -38,7 +40,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
+                        <a href="/joki-ml">
                             <img src="<?= base_url('assets/front-end/') ?>img/logo1.png" alt="" style=" width: 70px; margin-top: -20px; margin-bottom: -15px">
                         </a>
                     </div>
@@ -47,17 +49,17 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="/joki-ml">Homepage</a></li>
+                                <li class=""><a href="/joki-ml">Homepage</a></li>
                                 <!-- <li><a href="#">Contacts</a></li> -->
                             </ul>
                         </nav>
                     </div>
                 </div>
-                <!-- <div class="col-lg-2">
+                <div class="col-lg-2">
                     <div class="header__right">
-                        <a href="./login.html"><span class="icon_profile"></span></a>
+                        <a href="<?= base_url('login') ?>"><span class="icon_profile"></span></a>
                     </div>
-                </div> -->
+                </div>
             </div>
             <div id="mobile-menu-wrap"></div>
         </div>
@@ -141,13 +143,13 @@
                                             <label class="text-white">Catatan Untuk Penjoki</label>
                                             <input type="text" id="catatan" name="catatan" class="form-control form-control-sm" placeholder="Ketikkan Catatan Untuk Penjoki ...">
                                         </div>
-                                        <?php if($layanan->kategori != "Joki Rank / Paket") { ?>
+                                        <?php if ($layanan->kategori != "Joki Rank / Paket") { ?>
                                             <div class="form-group col-md-12">
                                                 <label class="text-white">Jumlah Bintang Yang Dipesan</label>
                                                 <input type="number" id="jumlah" name="jumlah" class="form-control form-control-sm" placeholder="Ketikkan Jumlah Bintang ...">
                                             </div>
                                         <?php } ?>
-                                        <input type="hidden" id="harga" value="<?= $layanan->harga?>">
+                                        <input type="hidden" id="harga" value="<?= $layanan->harga ?>">
                                     </div>
                                 </div>
 
@@ -194,7 +196,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12"> 
+                                    <div class="col-lg-12">
                                         <button type="button" class="btn btn-danger  btn-block" onclick="kirim()">Submit</button>
                                     </div>
                                 </div>
@@ -247,18 +249,18 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="footer__logo">
-                        <a href="./index.html"><img src="<?= base_url('assets/front-end/') ?>img/logo.png" alt=""></a>
+                        <a href="#"><img src="<?= base_url('assets/front-end/') ?>img/logo1.png" alt="" style="width:100px; padding-top:0px"></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="footer__nav">
+                    <!-- <div class="footer__nav">
                         <ul>
                             <li class="active"><a href="./index.html">Homepage</a></li>
                             <li><a href="./categories.html">Categories</a></li>
                             <li><a href="./blog.html">Our Blog</a></li>
                             <li><a href="#">Contacts</a></li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-lg-3">
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -273,15 +275,8 @@
     </footer>
     <!-- Footer Section End -->
 
-    <!-- Search model Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
+
+
     <!-- Search model end -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -300,13 +295,13 @@
             let harga = $('#harga').val();
             let total = harga * jumlah;
 
-            <?php if($layanan->kategori == "Joki Rank / Paket") { ?>
+            <?php if ($layanan->kategori == "Joki Rank / Paket") { ?>
                 total = harga;
                 jumlah = 'tidak ada bintang dalam Joki Rank Paket';
             <?php } ?>
 
-             // Pemeriksaan jika ada kolom yang kosong
-             if (!nama || !kontak || !tipe || !jumlah || !userId || !via || !dataAkun1 || !dataAkun2 || !hero || !catatan) {
+            // Pemeriksaan jika ada kolom yang kosong
+            if (!nama || !kontak || !tipe || !jumlah || !userId || !via || !dataAkun1 || !dataAkun2 || !hero || !catatan) {
                 Swal.fire({
                     text: "Semua kolom harus diisi!",
                     icon: "error",
@@ -332,8 +327,9 @@
             $.ajax({
                 type: 'POST',
                 url: '<?= base_url('pesanan/create') ?>',
-                data: { login_via: via , 
-                    email: dataAkun1, 
+                data: {
+                    login_via: via,
+                    email: dataAkun1,
                     password: dataAkun2,
                     hero: hero,
                     nick_name: userId,
@@ -342,7 +338,7 @@
                     nama: nama,
                     no_wa: kontak,
 
-                 },
+                },
                 dataType: 'json',
                 success: function(response) {
                     tele()
@@ -353,32 +349,32 @@
                     // Tangani kesalahan jika terjadi
                 }
             });
-            const tele = () =>{
+            const tele = () => {
                 $.ajax({
-                        type: 'POST',
-                        url: `https://api.telegram.org/bot${token}/sendMessage`,
-                        data: {
-                            chat_id: -4015736510,
-                            text: pesan,
-                            parse_mode: 'Markdown',
-                        },
-                        success: function (res) {
-                            Swal.fire({
-                                    text: "Terimaksih telah order",
-                                    icon: "success",
-                                    confirmButtonColor:"#dc3545"
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        location.reload();
-                                    }
-                                });
-                        },
-                        error: function (error) {
-                            console.error(error);
-                            alert("error failed");
-                        }
+                    type: 'POST',
+                    url: `https://api.telegram.org/bot${token}/sendMessage`,
+                    data: {
+                        chat_id: -4015736510,
+                        text: pesan,
+                        parse_mode: 'Markdown',
+                    },
+                    success: function(res) {
+                        Swal.fire({
+                            text: "Terimaksih telah order",
+                            icon: "success",
+                            confirmButtonColor: "#dc3545"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error(error);
+                        alert("error failed");
+                    }
                 });
-                
+
             }
 
         }

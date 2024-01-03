@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="">
+                        <a href="/joki-ml">
                             <img src="<?= base_url('assets/front-end/') ?>img/logo1.png" alt="" style=" width: 70px; margin-top: -20px; margin-bottom: -15px">
                         </a>
                     </div>
@@ -47,7 +47,7 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="/joki-ml">Homepage</a></li>
+                                <li class=""><a href="/joki-ml">Homepage</a></li>
                                 <!-- <li><a href="#">Contacts</a></li> -->
                             </ul>
                         </nav>
@@ -64,74 +64,45 @@
     </header>
     <!-- Header End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero">
+    <!-- Normal Breadcrumb Begin -->
+    <section class="normal-breadcrumb set-bg" data-setbg="<?= base_url('assets/front-end/') ?>img/slider.jpg">
         <div class="container">
-            <div class="hero__slider owl-carousel">
-                <div class="hero__items set-bg" data-setbg="<?= base_url('assets/uploads/layanan/') ?>slider.png">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <!-- <div class="label">Adventure</div> -->
-                                <!-- <h2>Joki Ryouta</h2>
-                                <p>Deskripsi</p> -->
-                                <img src="<?= base_url('assets/front-end/') ?>img/logo2.png" alt="" style=" width: 200px; margin-top: 20px; margin-bottom: 15px">
-
-                                <a href="#start" id="mulai"><span>Mulai</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="normal__breadcrumb__text">
+                        <h2>Login</h2>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Hero Section End -->
+    <!-- Normal Breadcrumb End -->
 
-    <!-- Product Section Begin -->
-    <section class="product spad" id="start">
+    <!-- Login Section Begin -->
+    <section class="login spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <?php foreach ($kategori as $k) { ?>
-                        <div class="trending__product">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="section-title">
-                                        <h4><?= $k->nama_kategori ?></h4>
-                                    </div>
-                                </div>
+                <div class="col-lg-6">
+                    <div class="login__form">
+                        <h3>Login</h3>
+                        <form action="<?= base_url('login') ?>" method="post" autocomplete="off">
+                            <div class="input__item">
+                                <input type="text" name="username" placeholder="Username">
+                                <span class="fa fa-user-circle"></span>
                             </div>
-                            <div class="row">
-                                <?php foreach ($layanan as $l) {
-                                    if ($l->kategori_id == $k->id) { ?>
-                                        <div class="col-lg-3 col-md-6 col-sm-6">
-                                            <div class="product__item">
-                                                <div class="product__item__pic set-bg" style="background-size: 250px 250px;" data-setbg="<?= base_url('assets/uploads/layanan/' . $l->foto) ?>">
-                                                    <?php if ($k->id == 1) { ?>
-                                                        <div class="comment"><?= "Rp " . number_format($l->harga, 0, ',', '.') ?> / <i class="fa fa-star"></i></div>
-                                                    <?php } else { ?>
-                                                        <div class="comment"><?= "Rp " . number_format($l->harga, 0, ',', '.') ?></div>
-                                                    <?php } ?>
-
-                                                </div>
-                                                <div class="product__item__text text-center">
-                                                    <h5 class="text-white"><?= $l->nama_layanan ?></h5>
-                                                    <a href="<?= base_url('home/formulir/' . $l->id) ?>" class="btn btn-danger btn-sm mt-2"><span>Order</span> <i class="fa fa-cart-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                <?php };
-                                } ?>
+                            <div class="input__item">
+                                <input type="password" name="password" placeholder="Password">
+                                <span class="icon_lock"></span>
                             </div>
-                        </div>
-                    <?php } ?>
-
-
+                            <button type="submit" class="site-btn">Login Now</button>
+                        </form>
+                        <!-- <a href="#" class="forget_pass">Forgot Your Password?</a> -->
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Product Section End -->
+    <!-- Login Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer">

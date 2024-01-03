@@ -14,7 +14,7 @@
 
             <!-- CONTENT -->
             <div class="content">
-                <div class="panel-header bg-primary-gradient">
+                <div class="panel-header bg-danger-gradient">
                     <div class="page-inner py-5">
                         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                             <div>
@@ -47,7 +47,7 @@
                                             foreach ($pesanan as $data) { ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
-                                                    <td><?= date("d M, Y",strtotime($data->created_at)) ?></td>
+                                                    <td><?= date("d M, Y", strtotime($data->created_at)) ?></td>
                                                     <td><?= $data->nama ?></td>
                                                     <td><?= $data->no_wa ?></td>
                                                     <td>

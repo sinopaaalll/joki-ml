@@ -14,7 +14,7 @@
 
             <!-- CONTENT -->
             <div class="content">
-                <div class="panel-header bg-primary-gradient">
+                <div class="panel-header bg-danger-gradient">
                     <div class="page-inner py-5">
                         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                             <div>
@@ -22,7 +22,7 @@
                             </div>
                             <div class="ml-md-auto py-2 py-md-0">
                                 <!-- <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a> -->
-                                <a href="<?= base_url('admin/layanan') ?>" class="btn btn-secondary btn-round">Kembali</a>
+                                <a href="<?= base_url('admin/layanan') ?>" class="btn btn-danger btn-round">Kembali</a>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                                                     <input type="file" class="form-control" name="foto" placeholder="Masukkan nama kategori">
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> &nbsp; Ubah</button>
+                                                    <button type="submit" class="btn btn-danger"><span class="fa fa-save"></span> &nbsp; Ubah</button>
                                                 </div>
                                             </form>
                                         </div>

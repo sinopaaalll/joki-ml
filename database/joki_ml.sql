@@ -2,8 +2,8 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 02, 2024 at 11:50 PM
+-- Host: 127.0.0.1:3307
+-- Generation Time: Jan 04, 2024 at 12:21 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `joki_ml`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `foto`) VALUES
+(1, 'admin', '$2y$10$HxQR.6ARYDFEsTY4JbRTe.zatBM7L6HWCCizrB9S9MjwY8KJR7oCm', 'Andhika Syarif Nataatmaja', '3ff7138788609fb0acfc7c00ad0ba2e5.jpg');
 
 -- --------------------------------------------------------
 
@@ -105,6 +126,12 @@ INSERT INTO `pesanan` (`id`, `login_via`, `email`, `password`, `hero`, `nick_nam
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -126,6 +153,12 @@ ALTER TABLE `pesanan`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kategori`

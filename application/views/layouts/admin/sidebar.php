@@ -1,16 +1,16 @@
 <!-- Sidebar -->
-<div class="sidebar sidebar-style-2">
+<div class="sidebar sidebar-style-2" data-background-color="dark">
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="<?= base_url('assets/admin/') ?>img/profile.jpg" alt="..." class="avatar-img rounded-circle" />
+                    <img src="<?= base_url('assets/uploads/user/' . $this->session->userdata('foto')) ?>" alt="..." class="avatar-img rounded-circle" />
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" aria-expanded="true">
                         <span>
-                            Hizrian
-                            <span class="user-level">Administrator</span>
+                            <?= $this->session->userdata('nama') ?>
+                            <span class="user-level"><?= $this->session->userdata('username') ?></span>
                             <!-- <span class="caret"></span> -->
                         </span>
                     </a>
